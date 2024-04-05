@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex | Pokemon</title>
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/640px-Pokebola-pokeball-png-0.png" type="image/x-icon">
+    <script src="js/app.js"></script>
+    <style>
+        body {
+            font-family: 'DBZFont', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images7.alphacoders.com/592/thumb-1920-592678.jpg');
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        nav {
+            background-color: #000;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #a1cdff;
+        }
+
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .character {
+            margin: 20px;
+            border: 2px solid #FFD700;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #000;
+            transition: transform 0.3s;
+            display: inline-block;
+            width: 200px; /* Ancho del cuadro de Pokémon */
+        }
+
+        .character:hover {
+            transform: scale(1.1);
+        }
+
+        .dragon-ball {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #CC0000;
+        }
+
+        .container {
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        #contenido {
+            margin-top: 1px;
+            background-color: rgba(0, 0, 0, 0.781);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 25px;
+            display:flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        #imagenes img {
+            width: 200px;
+            height: 200px;
+            margin-right: 20px;
+        }
+        
+        #informacion {
+            flex-grow: 1; /* Esto hace que el div ocupe todo el espacio restante */
+        }
+        
+        .btn-success{
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            padding: 10px 20px;
+            color: #155fbe;
+            background-color: #ffd700;
+            border: 4px solid #155ebe;
+            border-radius: 27px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-success:hover {
+            border: 4px solid #000000; 
+            background-color: #e40d0d;
+            color: #fff;
+        }
+
+        #contenido {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .pokemon-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .pokemon-name {
+            margin-top: 0;
+            color: #000;
+            text-transform: capitalize;
+            font-size: 24px;
+        }
+        
+        .pokemon-info {
+            margin-bottom: 10px;
+        }
+        
+        .info-item {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .stats {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .stats li {
+            margin-left: 20px;
+        }
+        
+        .sprites {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .sprite {
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/640px-Pokebola-pokeball-png-0.png" alt="Pokeball" style="width: 50px; height: auto;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokémon" style="width: 200px; height: auto;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/640px-Pokebola-pokeball-png-0.png" alt="Pokeball" style="width: 50px; height: auto;">
+</header>
+
+<nav>
+</nav>
+
+<div class="container" id="main">
+    <input type="text" id="pokemon" value="" placeholder="Busca por nombre o por ID">
+    <input type="button"class="btn btn-success" onclick="buscar()" value="Buscar">
+    <div id="contenido">
+    </div>
+</div>
+
+
+<footer>
+    <div class="caution">
+        <ul style="list-style: none; padding: 0;">
+            <li class="shueisha" style="margin-right: 10px;"><img src="img/BANDAI.png" alt="NINTENDO" style="width: 110px; height: auto;"><img src="https://www.freepnglogos.com/uploads/nintendo-logo-png/nintendo-u2013-logos-download-4.png" alt="NINTENDO" style="width: 120px; height: auto;margin-left: 20px;"><img src="img/SHUESHIA.png" alt="NINTENDO" style="width: 100px; height: auto;margin-left: 20px;"></li>
+            <p>©LEO ADSO 2669897</p>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>
+
